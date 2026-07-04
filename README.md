@@ -98,3 +98,22 @@ Include `Authorization: Bearer <token>` header for private routes.
 - Add form validation and toast notifications on the frontend.
 - Add tests (e.g., Jest + Supertest for backend, React Testing Library for frontend).
 - Set up CI/CD and environment-specific configs for production deployment.
+
+## App Structure Detail:
+
+### 1.Backend (Express + MongoDB):
+
+server.js — app entry with CORS, error handling
+config/db.js — Mongoose connection
+models/User.js — schema with bcrypt password hashing
+controllers/userController.js — register, login, get profile, list users (JWT-based)
+routes/userRoutes.js — wires up /api/users/* endpoints
+middleware/authMiddleware.js — JWT verification + admin role check
+
+### 2.Frontend (React):
+
+App.js + index.js — routing setup with React Router
+components/Navbar.js, pages/Home.js — Home page pings the backend on load to confirm the connection
+styles/App.css — basic styling
+
+Root: .gitignore, README.md (full setup instructions + API table), and docker-compose.yml to run Mongo + backend + frontend together.
